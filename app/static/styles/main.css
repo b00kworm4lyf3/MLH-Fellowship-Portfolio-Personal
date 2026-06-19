@@ -96,7 +96,11 @@ body {
     font-weight: 700;
 }
 
-ul{
+.hobby-grid img{
+    max-width: 100%;
+}
+
+.hobby-grid ul{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 16px;
