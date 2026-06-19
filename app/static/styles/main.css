@@ -96,6 +96,21 @@ body {
     font-weight: 700;
 }
 
+.hobby-grid img{
+    max-width: 100%;
+}
+
+.btn{
+    margin: 20px; 
+    display: inline-block;
+}
+
+.hobby-grid ul{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    list-style: none;
+}
 
 /* Work Experience Page */
 .experience-section {

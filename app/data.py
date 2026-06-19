@@ -1,0 +1,17 @@
+hobbies = [
+    {"name": "Lorem Ipsum", 
+     "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+     "image": "https://picsum.photos/300/200?grayscale"},
+    {"name": "Lorem Ipsum", 
+     "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+     "image": "https://picsum.photos/300/200?grayscale"},
+    {"name": "Lorem Ipsum", 
+     "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+     "image": "https://picsum.photos/300/200?grayscale"},
+    {"name": "Lorem Ipsum", 
+     "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+     "image": "https://picsum.photos/300/200?grayscale"},
+    {"name": "Lorem Ipsum", 
+     "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+     "image": "https://picsum.photos/300/200?grayscale"},
+    ]
