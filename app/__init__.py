@@ -18,4 +18,9 @@ def hobbyPage():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', title="About Me", url=os.getenv("URL"))
+
+
+@app.route('/work')
+def work():
+    return render_template('work.html', title="Work Experience", url=os.getenv("URL"))
