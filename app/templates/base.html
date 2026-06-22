@@ -23,10 +23,11 @@
     <header class="nav-bar">
         <div class="nav-content">
             <a href="{{url_for('index')}}">
-                <div class="nav-logo">
-                    <img src="./static/img/logo.svg" />
-                </div>
+                <img class="nav-logo" src="./static/img/logoipsum-custom-logo.svg" />
             </a>
+            {% for link in links %}
+            <a href = "{{url_for(link.endpoint)}}">{{link.name}}</a>
+            {% endfor %}
         </div>
     </header>
 

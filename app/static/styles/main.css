@@ -109,15 +109,15 @@ body {
     border: solid;
     border-radius: 25px;
     border-color: #007bff;
-    transition: color 0.3ms ease,
-                background-color 0.3ms ease;
+    transition: color 0.3s ease,
+                background-color 0.3s ease;
 }
 
-.btn:hover, :focus{
+.btn:hover, .btn:focus{
     color: white;
     background-color: #007bff;
-    transition: color 0.3ms ease
-                background-color 0.3ms ease;
+    transition: color 0.3s ease,
+                background-color 0.3s ease;
 }
 
 .hobby-grid ul{
