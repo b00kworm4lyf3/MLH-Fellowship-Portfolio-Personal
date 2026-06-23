@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="about-section">
+    <section class="about-section">
         <h1>About Me</h1>
-        <img src="{{url_for('static', filename = user.headshot)}}"/>
+        <img src="{{url_for('static', filename = user.headshot)}}" alt = "{{user.altTxt}}">
         {% for p in user.about %}
         <p>{{p}}</p>
         {% endfor %}
-    </div>
+    </section>
 {% endblock %}

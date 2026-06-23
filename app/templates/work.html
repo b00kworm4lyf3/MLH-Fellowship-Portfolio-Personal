@@ -1,33 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="experience-section">
-        <h2>Work Experience</h2>
+    <section class="experience-section">
+        <h1>Work Experience</h1>
 
-        <h3 class="section-subtitle">Current Experience</h3>
+        <h2 class="section-subtitle">Current Experience</h2>
         
         {% for item in exp.current %}
-        <div class="experience-item">
-            <h4>{{item.title}}</h4>
-            <h5><strong>{{item.company}}</strong> | {{item.year}}</h5>
+        <article class="experience-item">
+            <h3>{{item.title}}</h3>
+            <p><strong>{{item.company}}</strong> | {{item.year}}</p>
             <ul>
                 {% for point in item.about %}
                 <li>{{point}}</li>
                 {% endfor %}
             </ul>
-        </div>
+        </article>
         {% endfor %}
 
-        <h3 class="section-subtitle">Previous Experience</h3>
+        <h2 class="section-subtitle">Previous Experience</h2>
         {% for item in exp.past %}
-        <div class="experience-item">
-            <h4>{{item.title}}</h4>
-            <h5><strong>{{item.company}}</strong> | {{item.year}}</h5>
+        <article class="experience-item">
+            <h3>{{item.title}}</h3>
+            <p><strong>{{item.company}}</strong> | {{item.year}}</p>
             <ul>
                 {% for point in item.about %}
                 <li>{{point}}</li>
                 {% endfor %}
             </ul>
-        </div>
+        </article>
         {% endfor %}
-    </div>
+    </section>
 {% endblock %}

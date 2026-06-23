@@ -49,20 +49,20 @@ body {
     padding-right: 0px;
 }
 
-.profile {
+.hero {
     background-color: #1d539f !important;
     text-align: center;
     height: 320px;
     margin-bottom: 50px;
 }
 
-.profile h1 {
+.hero h1 {
         font-size: 50px;
         font-weight: 700;
         color: white;
 }
 
-.profile img {
+.hero img {
         border-radius: 50%;
         max-width: 100%;
         max-height: 100%;
@@ -72,8 +72,9 @@ body {
         padding: 20px;
 }
 
-.profile .profile-picture {
+.hero .profile-picture {
     margin-bottom: 30px;
+    padding: 0;
     height: 200px;
 }
 
@@ -144,12 +145,12 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.experience-item h4 {
+.experience-item h3 {
     margin-bottom: 5px;
     color: #333;
 }
 
-.experience-item h5 {
+.experience-item p {
     margin: 8px 0;
     color: #555;
 }

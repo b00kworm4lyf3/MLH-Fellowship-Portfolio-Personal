@@ -5,8 +5,8 @@
         <ul>
         {% for hobby in hobbies %}
             <li>
-                <p>{{hobby.name}}</p>
-                <img src="{{hobby.image}}"/>
+                <h2>{{hobby.name}}</h2>
+                <img src="{{hobby.image}}" alt = "{{hobby.altTxt}}">
                 <p>{{hobby.desc}}</p>
             </li>
         {% endfor %}
