@@ -23,7 +23,7 @@
     <header class="nav-bar">
         <nav class="nav-content">
             <a href="{{url_for('index')}}">
-                <img class="nav-logo" src="{{url_for('static', filename = 'img/logoipsum-custom-logo.svg')}}" alt = "Home">
+                <img class="nav-logo" src="{{url_for('static', filename = 'img/bookworm.png')}}" alt = "Home">
             </a>
             {% for link in links %}
             <a href = "{{url_for(link.endpoint)}}">{{link.name}}</a>

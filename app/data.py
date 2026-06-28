@@ -1,9 +1,9 @@
 user = {
-    "name": "Lorem Ipsum",
-    "title": "MLH Fellow",
-    "tagline": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    "headshot": "img/myphoto.jpg",
-    "altTxt": "Placeholder image of woman in a dress shirt. She is smiling at the camera.",
+    "name": "Sage Ebert",
+    "title": "MLH Fellow - PE Track || Technical Artist",
+    "tagline": "Creating at the intersection of art and technology",
+    "headshot": "img/SunflowerSage.jpg",
+    "altTxt": "Sage smiling at the camera. She is wearing black-rimmed glasses and holding sunflowers.",
     "about": [
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", 
         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
