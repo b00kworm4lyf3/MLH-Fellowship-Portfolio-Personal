@@ -1,5 +1,5 @@
 user = {
-    "name": "Sage Ebert",
+    "name": "Sage Ebert LALALALALALALA I CHAANGED THIS",
     "title": "MLH Fellow - PE Track || Technical Artist",
     "tagline": "Creating at the intersection of art and technology",
     "headshot": "img/SunflowerSage.jpg",
