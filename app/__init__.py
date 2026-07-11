@@ -86,6 +86,10 @@ def travel_page():
 
     return render_template('travel.html', title="Travel", map_html=map_html)
 
+@app.route('/timeline')
+def timeline():
+    return render_template('timeline.html', title = 'Timeline')
+
 @app.context_processor
 def nav():
     return{"links": LINKS, "contact": CONTACT, "url": os.getenv("URL")}

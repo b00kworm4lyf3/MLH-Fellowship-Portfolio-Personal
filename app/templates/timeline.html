@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block content %}
+    <article class = "timeline">
+        <h1>Timeline</h1>
+        <form>
+            <label for   = "name"   >Name:   </label>
+            <input type  = "text" id = "name" name="name" required/>
+            
+            <label for   = "email"  >Email:  </label>
+            <input type  = "email" id = "email" name="email" required/>
+            
+            <label for   = "content">Content:</label>
+            <textarea id = "content" name="content" rows = "5" cols = "40" required></textarea>
+
+            <button type = "submit">Post</button>
+        </form>
+
+        <section id = "posts"></section>
+    </article>
+
+    <script>
+        const form = document.querySelector('form');
+
+        async function send(){
+            const formData = new FormData(form);
+
+            try{
+                const resp = await fetch('/api/timeline_post', {
+                    method: "POST",
+                    body: formData,
+                });
+
+                if(!resp.ok){
+                    throw new Error(`HTTP error! status: ${resp.status}`);
+                }
+
+                console.log(await resp.json());
+            }
+            catch(e){
+                console.error(e);
+            }
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await send();
+            form.reset();
+            load();
+        });
+
+        async function load(){
+            try{
+                const resp = await fetch('/api/timeline_post');
+
+                if(!resp.ok){
+                    throw new Error(`HTTP error! status: ${resp.status}`);
+                }
+                
+                const data = await resp.json();
+                const container = document.getElementById('posts');
+                container.innerHTML = '';
+
+                for(const post of data.timeline_posts){
+                    const div  = document.createElement('div');
+                    const h2   = document.createElement('h2');
+                    const time = document.createElement('time');
+                    const p    = document.createElement('p');
+                    const img  = document.createElement('img');
+
+                    div.className    = 'timeline-post';
+                    h2.textContent   = post.name;
+                    time.dateTime    = new Date(post.created_at).toISOString();
+                    time.textContent = post.created_at;
+                    p.textContent    = post.content;
+                    img.src          = await gravatarUrl(post.email);
+                    
+                    div.appendChild(img);
+                    div.appendChild(h2);
+                    div.appendChild(time);
+                    div.appendChild(p);
+
+                    container.appendChild(div);
+                }
+            }
+            catch(e){
+                console.error(e);
+            }
+        }
+
+        async function gravatarUrl(email) {
+            const normalized = email.trim().toLowerCase();
+            const bytes = new TextEncoder().encode(normalized);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', bytes);
+            const hashHex = [...new Uint8Array(hashBuffer)]
+                .map(b => b.toString(16).padStart(2, '0'))
+                .join('');
+            return `https://www.gravatar.com/avatar/${hashHex}?d=robohash`;
+        }
+
+        load();
+    </script>
+{% endblock %}
