@@ -32,10 +32,11 @@ mydb.connect()
 mydb.create_tables([TimelinePost])
 
 LINKS = [
-    {"name": "About",   "endpoint": "about", "tagline": "About Me"},
-    {"name": "Work",    "endpoint": "work", "tagline": "Work Experience"},
-    {"name": "Hobbies", "endpoint": "hobby", "tagline": "My Hobbies"},
-    {"name": "Travel", "endpoint": "travel_page", "tagline": "My Travels"}
+    {"name": "About",    "endpoint": "about",       "tagline": "About Me"},
+    {"name": "Work",     "endpoint": "work",        "tagline": "Work Experience"},
+    {"name": "Hobbies",  "endpoint": "hobby",       "tagline": "My Hobbies"},
+    {"name": "Travel",   "endpoint": "travel_page", "tagline": "My Travels"},
+    {"name": "Timeline", "endpoint": "timeline",    "tagline": "Timeline"}
 ]
 
 CONTACT = [

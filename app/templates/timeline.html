@@ -55,7 +55,7 @@
                 if(!resp.ok){
                     throw new Error(`HTTP error! status: ${resp.status}`);
                 }
-                
+
                 const data = await resp.json();
                 const container = document.getElementById('posts');
                 container.innerHTML = '';
@@ -65,16 +65,16 @@
                     const h2   = document.createElement('h2');
                     const time = document.createElement('time');
                     const p    = document.createElement('p');
-                    const img  = document.createElement('img');
+                    // const img  = document.createElement('img');
 
                     div.className    = 'timeline-post';
                     h2.textContent   = post.name;
                     time.dateTime    = new Date(post.created_at).toISOString();
                     time.textContent = post.created_at;
                     p.textContent    = post.content;
-                    img.src          = await gravatarUrl(post.email);
+                    // img.src          = await gravatarUrl(post.email);
                     
-                    div.appendChild(img);
+                    // div.appendChild(img);
                     div.appendChild(h2);
                     div.appendChild(time);
                     div.appendChild(p);
@@ -87,15 +87,15 @@
             }
         }
 
-        async function gravatarUrl(email) {
-            const normalized = email.trim().toLowerCase();
-            const bytes = new TextEncoder().encode(normalized);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', bytes);
-            const hashHex = [...new Uint8Array(hashBuffer)]
-                .map(b => b.toString(16).padStart(2, '0'))
-                .join('');
-            return `https://www.gravatar.com/avatar/${hashHex}?d=robohash`;
-        }
+        // async function gravatarUrl(email) {
+        //     const normalized = email.trim().toLowerCase();
+        //     const bytes = new TextEncoder().encode(normalized);
+        //     const hashBuffer = await crypto.subtle.digest('SHA-256', bytes);
+        //     const hashHex = [...new Uint8Array(hashBuffer)]
+        //         .map(b => b.toString(16).padStart(2, '0'))
+        //         .join('');
+        //     return `https://www.gravatar.com/avatar/${hashHex}?d=robohash`;
+        // }
 
         load();
     </script>
