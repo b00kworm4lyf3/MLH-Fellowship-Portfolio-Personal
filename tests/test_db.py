@@ -1,3 +1,4 @@
+#ruff: noqa: F403 F405
 import unittest
 from peewee import *
 
@@ -19,16 +20,16 @@ class TestTimelinePost(unittest.TestCase):
 
     def test_timeline_post(self):
         first_post = TimelinePost.create(name='John Doe', email='john@example.com', content="Hello world, I'm John!")
-        assert first_post.id == 1
+        self.assertEqual(first_post.id, 1)
 
         second_post = TimelinePost.create(name='Jane Doe', email='jane@example.com', content="Hello world, I'm Jane!")
-        assert second_post.id == 2
+        self.assertEqual(second_post.id, 2)
 
         posts = TimelinePost.select().order_by(TimelinePost.created_at.desc())
-        assert posts.count() == 2
-        assert posts[0].name == 'Jane Doe'
-        assert posts[0].email == 'jane@example.com'
-        assert posts[0].content == "Hello world, I'm Jane!"
-        assert posts[1].name == 'John Doe'
-        assert posts[1].email == 'john@example.com'
-        assert posts[1].content == "Hello world, I'm John!"
+        self.assertEqual(len(posts), 2)
+
+        actual = [(p.name, p.email, p.content) for p in posts]
+        self.assertEqual(actual, [
+            ('Jane Doe', 'jane@example.com', "Hello world, I'm Jane!"),
+            ('John Doe', 'john@example.com', "Hello world, I'm John!"),
+        ])
