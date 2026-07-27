@@ -13,6 +13,7 @@
             <textarea id = "content" name="content" rows = "5" cols = "40" required></textarea>
 
             <button type = "submit">Post</button>
+            <p id="status" class="form-status" role="alert"></p>
         </form>
 
         <section id = "posts"></section>
@@ -43,9 +44,27 @@
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            await send();
-            form.reset();
-            load();
+            status.textContent = '';
+            
+            try {
+                const resp = await send();
+
+                if (resp.status === 429) {
+                    status.textContent = 'Rate Limit Hit';
+                    return;
+                }
+                if (!resp.ok) {
+                    status.textContent = `Something went wrong (${resp.status})`;
+                    return;
+                }
+
+                form.reset();
+                load();
+            }
+            catch (e) {
+                status.textContent = 'Network error';
+                console.error(e);
+            }
         });
 
         async function load(){
@@ -87,15 +106,15 @@
             }
         }
 
-        // async function gravatarUrl(email) {
-        //     const normalized = email.trim().toLowerCase();
-        //     const bytes = new TextEncoder().encode(normalized);
-        //     const hashBuffer = await crypto.subtle.digest('SHA-256', bytes);
-        //     const hashHex = [...new Uint8Array(hashBuffer)]
-        //         .map(b => b.toString(16).padStart(2, '0'))
-        //         .join('');
-        //     return `https://www.gravatar.com/avatar/${hashHex}?d=robohash`;
-        // }
+        async function gravatarUrl(email) {
+            const normalized = email.trim().toLowerCase();
+            const bytes = new TextEncoder().encode(normalized);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', bytes);
+            const hashHex = [...new Uint8Array(hashBuffer)]
+                .map(b => b.toString(16).padStart(2, '0'))
+                .join('');
+            return `https://www.gravatar.com/avatar/${hashHex}?d=robohash`;
+        }
 
         load();
     </script>
