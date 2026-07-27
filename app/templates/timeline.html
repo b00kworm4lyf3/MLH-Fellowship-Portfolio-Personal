@@ -21,25 +21,14 @@
 
     <script>
         const form = document.querySelector('form');
+        const status = document.getElementById('status');
 
         async function send(){
             const formData = new FormData(form);
-
-            try{
-                const resp = await fetch('/api/timeline_post', {
-                    method: "POST",
-                    body: formData,
-                });
-
-                if(!resp.ok){
-                    throw new Error(`HTTP error! status: ${resp.status}`);
-                }
-
-                console.log(await resp.json());
-            }
-            catch(e){
-                console.error(e);
-            }
+            return await fetch('/api/timeline_post', {
+                method: "POST",
+                body: formData,
+            });
         }
 
         form.addEventListener('submit', async (e) => {
@@ -91,9 +80,9 @@
                     time.dateTime    = new Date(post.created_at).toISOString();
                     time.textContent = post.created_at;
                     p.textContent    = post.content;
-                    // img.src          = await gravatarUrl(post.email);
+                    img.src          = await gravatarUrl(post.email);
                     
-                    // div.appendChild(img);
+                    div.appendChild(img);
                     div.appendChild(h2);
                     div.appendChild(time);
                     div.appendChild(p);
