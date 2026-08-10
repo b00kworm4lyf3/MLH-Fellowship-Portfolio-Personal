@@ -17,7 +17,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Setupp Python
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11.9'
@@ -26,7 +26,7 @@ jobs:
         run: python -m venv .venv
 
       - name: Install Dependencies
-        run: .venv/Scripts/pip install -r requirements.txt
+        run: .venv/bin/pip install -r requirements.txt
 
       - name: Run Tests
         run: ./run_test.sh
