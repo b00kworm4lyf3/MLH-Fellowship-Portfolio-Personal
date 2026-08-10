@@ -45,4 +45,12 @@ jobs:
       
       - name: Failure Message
         if: failure()
-        run: curl -s -X POST "${{ secrets.DISCORD_HOOK }}" -d "content=Deployment Unsuccessful"
+        run: curl -s -X POST "${{ secrets.DISCORD_HOOK }}" -d "content=Deployment Failed"
+
+  deploy-failure:
+    name: "Notify on failure"
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - name: Failure Message
+        run: curl -s -X POST "${{ secrets.DISCORD_HOOK }}" -d "content=Deployment Failed"
