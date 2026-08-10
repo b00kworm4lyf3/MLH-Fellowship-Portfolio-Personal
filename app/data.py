@@ -1,5 +1,5 @@
 user = {
-    "name": "Sage Ebert -- workflow test change",
+    "name": "Sage Ebert -- deploy workflow change",
     "title": "MLH Fellow - PE Track || Technical Artist",
     "tagline": "Creating at the intersection of art and technology",
     "headshot": "img/SunflowerSage.jpg",
