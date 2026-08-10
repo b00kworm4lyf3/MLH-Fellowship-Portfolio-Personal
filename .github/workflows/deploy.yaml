@@ -41,14 +41,8 @@ jobs:
 
       - name: Success Message
         if: success()
-        uses: discord-actions/discord-webhook@v2
-        with:
-          url: ${{ secrets.DISCORD_HOOK }}
-          content: "Deployment Successful"
+        run: curl -s -X POST "${{ secrets.DISCORD_HOOK }}" -d "content=Deployment Successful"
       
       - name: Failure Message
         if: failure()
-        uses: discord-actions/discord-webhook@v2
-        with:
-          url: ${{ secrets.DISCORD_HOOK }}
-          content: "Deployment Failed"
+        run: curl -s -X POST "${{ secrets.DISCORD_HOOK }}" -d "content=Deployment Unsuccessful"
