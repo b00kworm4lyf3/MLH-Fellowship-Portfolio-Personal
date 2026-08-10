@@ -1,5 +1,5 @@
 user = {
-    "name": "Sage Ebert -- midway check change",
+    "name": "Sage Ebert -- workflow test change",
     "title": "MLH Fellow - PE Track || Technical Artist",
     "tagline": "Creating at the intersection of art and technology",
     "headshot": "img/SunflowerSage.jpg",
