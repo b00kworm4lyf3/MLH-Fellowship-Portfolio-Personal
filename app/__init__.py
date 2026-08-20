@@ -1,13 +1,14 @@
-#ruff: noqa: F403 F405
-import os
-import folium
+#ruff: F403 F405
 import datetime
-from flask import Flask, render_template, request
+import os
+
+import folium
 from dotenv import load_dotenv
+from flask import Flask, render_template, request
 from peewee import *
 from playhouse.shortcuts import model_to_dict
 
-from .data import user, hobbies, exp, edu, travel
+from .data import edu, exp, hobbies, travel, user
 
 load_dotenv()
 app = Flask(__name__)
@@ -125,10 +126,16 @@ def get_timeline_post():
         ]
     }
 
-@app.route('/api/timeline_post/<int:post_id>', methods = ['DELETE'])
-def delete_timeline_post(post_id):
-    post = TimelinePost.get_or_none(TimelinePost.id == post_id)
-    if post is None:
-        return {'error': 'post not found'}
-    post.delete_instance()
-    return {'deleted post with id': post_id}
+@app.route('/health')
+def health():
+    checks = {}
+    ok = True
+
+    try:
+        mydb.execute_sql('SELECT 1')
+        checks['database'] = 'up'
+    except (DatabaseError, InterfaceError):
+        checks['database'] = 'down'
+        ok = False
+
+    return {'status': 'healthy' if ok else 'unhealthy', 'checks': checks}, (200 if ok else 503)
