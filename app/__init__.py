@@ -8,7 +8,7 @@ from flask import Flask, render_template, request
 from peewee import *
 from playhouse.shortcuts import model_to_dict
 
-from .data import edu, exp, hobbies, travel, user
+from .data import edu, exp, hobbies, stumble_sites, travel, user
 
 load_dotenv()
 app = Flask(__name__)
@@ -99,7 +99,7 @@ def timeline():
 
 @app.context_processor
 def nav():
-    return{"links": LINKS, "contact": CONTACT, "url": os.getenv("URL")}
+    return{"links": LINKS, "contact": CONTACT, "url": os.getenv("URL"), "stumble_sites": stumble_sites}
 
 @app.route('/api/timeline_post', methods = ['POST'])
 def post_timeline_post():

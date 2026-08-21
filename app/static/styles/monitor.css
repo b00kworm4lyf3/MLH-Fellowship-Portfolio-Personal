@@ -1,125 +1,67 @@
 /* ============================================================
-   monitor.css — the persistent chrome frame + recessed screen.
-   Load AFTER main.css. The screen rectangle below is mapped from
-   the blob's field-space safe area using the same math as the
-   shader: cssX = 50vw + fieldX*50vh, cssY = 50vh - fieldY*50vh.
-   Current safe field rect ≈ x[-0.50, 0.42], y[-0.22, 0.30].
+   monitor.css — chrome frame + recessed screen. Load AFTER main.css.
+   Menu <a> labels are positioned with the SAME vh math the shader
+   uses for its pads (field x=-1.45, y=0.30 step 0.15, size .13/.055),
+   so they sit exactly on the embossed chrome pads at any aspect.
    ============================================================ */
 
 html, body { height: 100%; overflow: hidden; }   /* frame is fixed; only the screen scrolls */
 
-#monitor-canvas {
-  position: fixed; inset: 0;
-  width: 100%; height: 100%;
-  z-index: 0; display: block;
-}
-/* fallback if WebGL is unavailable */
+#monitor-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; display: block; }
 .no-webgl body { background: #15121f; }
 
-/* ---- frame furniture (sits on the chrome) ---- */
 .frame { position: fixed; z-index: 2; }
 
 .frame-logo { top: 3.5vh; left: 3vw; }
-.frame-logo a {
-  font-family: ui-monospace, "Roboto Mono", Consolas, monospace;
-  font-size: clamp(20px, 3.4vh, 34px); font-weight: 700; letter-spacing: .02em;
-  color: #241a38; text-decoration: none;
-  text-shadow: 0 1px 0 rgba(255,255,255,.45);
-}
-.frame-logo a span { color: #7d3fc4; }
+.frame-logo a { font-family: ui-monospace,"Roboto Mono",Consolas,monospace;
+  font-size: clamp(20px,3.4vh,34px); font-weight: 700; color: #e9e4f6; text-decoration: none;
+  text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+.frame-logo a span { color: #cbb0ff; }
 
-.frame-title {
-  top: 3.2vh; right: 3vw; text-align: right;
-  font-family: ui-monospace, "Roboto Mono", Consolas, monospace;
-  font-size: clamp(22px, 4.6vh, 46px); font-weight: 700; line-height: 1.02;
-  text-transform: uppercase; letter-spacing: .04em;
-  color: #241a38; text-shadow: 0 1px 0 rgba(255,255,255,.4);
-}
+.frame-title { top: 3.2vh; right: 3vw; text-align: right;
+  font-family: ui-monospace,"Roboto Mono",Consolas,monospace;
+  font-size: clamp(22px,4.6vh,46px); font-weight: 700; line-height: 1.02; text-transform: uppercase;
+  letter-spacing: .04em; color: #efe9fb; text-shadow: 0 1px 4px rgba(0,0,0,.55); }
 
-/* ---- menu: beveled ATM-style chrome buttons ---- */
-.frame-menu {
-  top: 50%; left: 2.4vw; transform: translateY(-50%);
-  display: flex; flex-direction: column; gap: 10px;
-}
-.frame-menu .menu-label {
-  font-family: ui-monospace, "Roboto Mono", Consolas, monospace;
-  font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
-  color: #2a2340; margin-bottom: 2px; text-shadow: 0 1px 0 rgba(255,255,255,.4);
-}
-.frame-menu a {
-  display: block; min-width: 116px; padding: 8px 14px;
-  font-size: 13px; font-weight: 600; text-decoration: none; text-align: center;
-  color: #2a2340; text-shadow: 0 1px 0 rgba(255,255,255,.55);
-  background: linear-gradient(180deg, #e4e0ec 0%, #b6b0c8 55%, #9a93b2 100%);
-  border: 1px solid rgba(255,255,255,.6); border-radius: 9px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.95),
-              inset 0 -2px 3px rgba(60,40,90,.28),
-              0 2px 5px rgba(20,12,35,.45);
-  transition: filter .12s ease;
-}
-.frame-menu a:hover { filter: brightness(1.06) saturate(1.05); }
-.frame-menu a:active {
-  box-shadow: inset 0 2px 5px rgba(40,25,70,.5), 0 1px 2px rgba(20,12,35,.35);
-}
-.frame-menu a:focus-visible { outline: 2px solid #7d3fc4; outline-offset: 3px; }
+/* menu: transparent hit-areas + labels over the shader-drawn chrome pads */
+.frame-menu { left: calc(50vw - 79vh); top: 32.25vh; display: flex; flex-direction: column; gap: 2vh; }
+.frame-menu .menu-label { position: absolute; top: -3.4vh; left: 2px;
+  font-family: ui-monospace,"Roboto Mono",Consolas,monospace; font-size: 11px; letter-spacing: .2em;
+  text-transform: uppercase; color: #d8cff0; text-shadow: 0 1px 2px rgba(0,0,0,.6); }
+.frame-menu a { display: grid; place-items: center; width: 13vh; height: 5.5vh; border-radius: 2vh;
+  text-decoration: none; font-weight: 600; font-size: clamp(11px,1.55vh,14px); letter-spacing: .04em;
+  color: #241a38; text-shadow: 0 1px 0 rgba(255,255,255,.55); transition: color .12s ease; }
+.frame-menu a:hover { color: #4a2b8f; }
+.frame-menu a:focus-visible { outline: 2px solid #cbb0ff; outline-offset: 3px; }
 
-/* ---- contact (quiet, bottom-left) ---- */
-.frame-contact {
-  bottom: 3vh; left: 3vw; display: flex; gap: 16px;
-  font-size: 12px;
-}
-.frame-contact a { color: #2f2350; text-decoration: none; text-shadow: 0 1px 0 rgba(255,255,255,.4); }
+.frame-contact { bottom: 3vh; left: 3vw; display: flex; gap: 16px; font-size: 12px; }
+.frame-contact a { color: #cbc2e6; text-decoration: none; text-shadow: 0 1px 2px rgba(0,0,0,.5); }
 .frame-contact a:hover { text-decoration: underline; }
 
-/* ---- "stumble" — the random 6th destination ---- */
 .frame-stumble { bottom: 3vh; right: 3vw; }
-.frame-stumble button {
-  width: 68px; height: 68px; padding: 0; border: none; cursor: pointer;
-  background: transparent; border-radius: 50%;
-}
-.frame-stumble button:focus-visible { outline: 2px solid #7d3fc4; outline-offset: 3px; }
+.frame-stumble button { width: 76px; height: 76px; padding: 0; border: none; cursor: pointer;
+  background: transparent; border-radius: 50%; }
+.frame-stumble button:focus-visible { outline: 2px solid #cbb0ff; outline-offset: 3px; }
 .frame-stumble svg { display: block; width: 100%; height: 100%; }
-@media (prefers-reduced-motion: no-preference) {
-  .frame-stumble svg { animation: spin 14s linear infinite; }
-}
+@media (prefers-reduced-motion: no-preference) { .frame-stumble svg { animation: spin 16s linear infinite; } }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ============================================================
-   THE SCREEN — recessed monitor content, scrolls left/right
-   ============================================================ */
-#screen {
-  position: fixed; z-index: 2;
-  left: calc(50vw - 25vh); width: 46vh;   /* field x[-0.50, 0.42] */
-  top: 35vh; height: 26vh;                /* field y[-0.22, 0.30] */
-  overflow-x: auto; overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;                  /* hide scrollbar; wheel/drag still scroll */
-}
-#screen::-webkit-scrollbar { display: none; }
+/* ---- the screen: recessed monitor content, scrolls vertically ---- */
+#screen { position: fixed; z-index: 2;
+  left: calc(50vw - 22.5vh); width: 73.6vh;   /* field x[-0.45, 1.02] at SCALE 1.6 + OFFSET.x 0.35 */
+  top: 28.5vh; height: 42vh;                    /* field y[-0.40, 0.43] */
+  overflow-y: auto; overflow-x: hidden; scrollbar-width: none; }
+#screen::-webkit-scrollbar { width: 7px; }
+#screen::-webkit-scrollbar-thumb { background: rgba(177,92,255,.45); border-radius: 4px; }
+.screen-inner { min-height: 100%; padding: 5% 6%; color: var(--text); }
 
-.screen-track { display: flex; height: 100%; }
-
-.panel {
-  flex: 0 0 100%; height: 100%; scroll-snap-align: start;
-  overflow-y: auto; padding: 4% 6%;
-  color: var(--text);
-  font-size: clamp(12px, 1.7vh, 16px); line-height: 1.5;
-}
-.panel h1, .panel h2 { color: var(--text); margin: 0 0 .4em; }
-.panel h1 { font-size: clamp(18px, 3vh, 28px); }
-.panel a { color: var(--accent); }
-.panel::-webkit-scrollbar { width: 6px; }
-.panel::-webkit-scrollbar-thumb { background: rgba(177,92,255,.5); border-radius: 3px; }
-
-/* ---- mobile: the desktop metaphor collapses to a plain stack ---- */
+/* mobile: metaphor collapses to a plain stacked page */
 @media (max-width: 760px) {
   html, body { overflow: auto; }
   #monitor-canvas { display: none; }
-  .frame-menu { position: static; transform: none; flex-direction: row; flex-wrap: wrap;
-                justify-content: center; margin: 16px auto; }
   .frame-logo, .frame-title { position: static; text-align: center; margin: 12px auto; color: var(--text); text-shadow: none; }
+  .frame-menu { position: static; transform: none; flex-direction: row; flex-wrap: wrap; justify-content: center; margin: 16px auto; }
+  .frame-menu a { color: var(--text); text-shadow: none; background: var(--surface); border: 1px solid var(--border); }
   .frame-contact, .frame-stumble { position: static; justify-content: center; margin: 16px auto; }
   #screen { position: static; width: auto; height: auto; overflow: visible; }
-  .screen-track { display: block; }
-  .panel { flex: none; height: auto; }
 }

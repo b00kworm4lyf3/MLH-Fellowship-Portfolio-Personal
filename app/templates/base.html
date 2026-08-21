@@ -20,10 +20,8 @@
 </head>
 
 <body>
-    <!-- chrome + recessed screen backdrop -->
     <canvas id="monitor-canvas"></canvas>
 
-    <!-- frame furniture: fixed, sits on the chrome -->
     <div class="frame frame-logo">
         <a href="{{ url_for('index') }}">sage<span>.ebert</span></a>
     </div>
@@ -45,18 +43,15 @@
 
     <div class="frame frame-stumble">
         <button type="button" id="stumble-btn"
-                data-links='[{% for link in links %}"{{ url_for(link.endpoint) }}"{% if not loop.last %},{% endif %}{% endfor %}]'
-                aria-label="Stumble to a random page" title="Stumble">
-            <svg viewBox="0 0 68 68"><path id="stumble-path" fill="none" stroke="#7d3fc4" stroke-width="5" stroke-linecap="round"/></svg>
+                data-links='[{% for s in stumble_sites|default([]) %}"{{ s }}"{% if not loop.last %},{% endif %}{% endfor %}]'
+                aria-label="Stumble to a random site" title="Stumble">
+            <svg viewBox="0 0 68 68"><path id="stumble-path" fill="none" stroke="#b15cff" stroke-width="5" stroke-linecap="round"/></svg>
         </button>
     </div>
 
-    <!-- the monitor: content lives here and scrolls left/right -->
     <div id="screen">
-        <div class="screen-track">
-            <article class="panel">
-                {% block content %}{% endblock %}
-            </article>
+        <div class="screen-inner">
+            {% block content %}{% endblock %}
         </div>
     </div>
 

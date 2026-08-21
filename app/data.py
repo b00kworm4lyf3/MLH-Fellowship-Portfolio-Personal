@@ -87,3 +87,9 @@ travel = {
     ]
 }
 
+stumble_sites = [
+    "https://github.com/b00kworm4lyf3",
+    "https://www.coolmathgames.com/",
+    "https://itch.io/",
+]
+
