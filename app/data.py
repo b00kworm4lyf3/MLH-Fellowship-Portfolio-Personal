@@ -54,7 +54,7 @@ exp = {
 edu = [
     {"degree": "BS Creative Tecnology and Design",
      "school": "University of Colorado Boulder",
-     "period": "2014 - 2027",
+     "period": "2024 - 2027",
      "description": "Minor in Computer Science (ABET-accredited program), 4.0 GPA, Tau Sigma Honor Society",
      "links":[]},
     {"degree": "Associate General Studies",

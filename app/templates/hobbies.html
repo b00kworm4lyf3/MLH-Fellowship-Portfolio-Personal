@@ -6,7 +6,7 @@
         {% for hobby in hobbies %}
             <li>
                 <h2>{{hobby.name}}</h2>
-                <img src="{{hobby.image}}" alt = "{{hobby.altTxt}}">
+                <img src="{{url_for('static', filename=hobby.image)}}" alt = "{{hobby.altTxt}}">
                 <p>{{hobby.desc}}</p>
             </li>
         {% endfor %}

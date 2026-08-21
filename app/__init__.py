@@ -76,7 +76,7 @@ def travel_page():
     for place in travel["visited"]:
         folium.Marker(
             location=[place["lat"], place["lon"]],
-            popup=f"{place['name']} (Visited - {place['year']})",
+            popup=f"{place['name']}",
             icon=folium.Icon(color='green', icon='ok-sign')
         ).add_to(travel_map)
 
