@@ -45,9 +45,15 @@ html, body { height: 100%; overflow: hidden; }
 @media (prefers-reduced-motion: no-preference) { .frame-stumble svg { animation: spin 16s linear infinite; } }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ---- the screen: recessed monitor content, scrolls vertically ---- */
+/* ---- the screen: recessed monitor content, scrolls vertically ----
+   These four numbers are the knob for where content sits inside the blob:
+     left   calc(50vw - Nvh)  -> bigger N = further LEFT
+     top    Nvh               -> smaller N = further UP
+     width  Nvh               -> bigger = wider
+     height Nvh               -> bigger = taller
+   Keep the box inside the blob's dark area (nudge and refresh to taste). */
 #screen { position: fixed; z-index: 2;
-  left: calc(50vw - 22.5vh); width: 73.6vh; top: 28.5vh; height: 42vh;
+  left: calc(50vw - 34vh); width: 78vh; top: 25vh; height: 45vh;
   overflow-y: auto; overflow-x: hidden; scrollbar-width: none; }
 #screen::-webkit-scrollbar { width: 7px; }
 #screen::-webkit-scrollbar-thumb { background: rgba(177,92,255,.45); border-radius: 4px; }
