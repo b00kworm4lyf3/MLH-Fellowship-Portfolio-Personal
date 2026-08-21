@@ -44,7 +44,7 @@
     // nav links, change the 5 here AND the labels in base.html.)
     float menu(vec2 p){
       float m = 1e5;
-      for(int i=0;i<5;i++){ float yy = 0.30 - float(i)*0.15; m = min(m, sdRoundBox(p - vec2(-1.45, yy), vec2(0.13,0.055), 0.02)); }
+      for(int i=0;i<5;i++){ float yy = 0.30 - float(i)*0.15; m = min(m, sdRoundBox(p - vec2(-1.60, yy), vec2(0.13,0.055), 0.02)); }
       return m;
     }
     vec2 gMenu(vec2 p, float e){ return vec2(menu(p+vec2(e,0.0))-menu(p-vec2(e,0.0)), menu(p+vec2(0.0,e))-menu(p-vec2(0.0,e))); }
