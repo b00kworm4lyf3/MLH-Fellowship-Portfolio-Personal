@@ -76,14 +76,14 @@ travel = {
             "name": "Singapore",
             "lat": 1.2903,
             "lon": 103.8520
-        }
-    ],
-    "wishlist": [
+        },
         {
             "name": "Japan",
             "lat": 36.2048,
             "lon": 138.2529
         }
+    ],
+    "wishlist": [
     ]
 }
 
